@@ -1,10 +1,26 @@
-version: "3"
+version: '3'
+
 services:
   app:
     container_name: notifications_service
     build: .
     restart: always
     ports:
-      - 3000:3000
-    
-    
+      - 3001:3001
+
+  db:
+    container_name: postgres_notifications
+    image: postgres:latest
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: notifications
+      POSTGRES_PASSWORD: notifications
+      POSTGRES_DB: notifications
+    volumes:
+      - postgres_notifications:/var/lib/postgresql/data
+
+volumes:
+  postgres_notifications:
+    driver: local
