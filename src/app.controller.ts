@@ -1,8 +1,17 @@
-import { Controller, Get, Patch, Delete, Param, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Param,
+  Body,
+} from '@nestjs/common';
 import { AppService } from './app.service';
+import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 
-@Controller()
+@Controller('notifications')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -18,7 +27,7 @@ export class AppController {
 
   @Post()
   create(@Body() createNotificationDto: CreateNotificationDto) {
-    return this.appService.create(createNotificationDto)
+    return this.appService.create(createNotificationDto);
   }
 
   @Patch(':id')
