@@ -1,10 +1,10 @@
-import { CreateNotificationDto } from './dto/create-notification.dto';
-import { UpdateNotificationDto } from './dto/update-notification.dto';
+import { CreateNotificationDto } from '../dto/create-notification.dto';
+import { UpdateNotificationDto } from '../dto/update-notification.dto';
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from './infra/prisma.service';
+import { PrismaService } from '../../database/prisma/prisma.service';
 
 @Injectable()
-export class AppService {
+export class NotificationsService {
   constructor(private prismaService: PrismaService) {}
 
   findAll() {
